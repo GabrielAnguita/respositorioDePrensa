@@ -40,7 +40,7 @@ def get_tor_session():
 
 # EL MERCURIO SECTION #
 
-url_mercurio = "https://cache-elastic-pandora.ecn.cl/emol/noticia/_search?q=publicada:true+AND+ultimoMinuto:true+AND+seccion:*+AND+temas.id:*&sort=fechaModificacion:desc&size=30&from="
+url_mercurio = "AQUI VA LA URL DE LA API, ENCUENTRELA USTED"
 
 
 
