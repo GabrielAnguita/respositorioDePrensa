@@ -52,18 +52,16 @@ db = client["noticias"]
 collection = db["mercurio_raw"]
 
 for i in range(0,100):
-    
-    noticias_mercurio = [] 
-    # should create new requests session, for resetting tor proxy (does not really work yet)
+        
+    # should create new requests session, for resetting tor proxy 
+    # (does not really work yet lol have to figure out why)
     session = get_tor_session()
     
-    # Check if ip is properly hidden
-    print(session.get("http://httpbin.org/ip").text)
-
     # response object from querying the API 
     response = session.get(url_mercurio + str( i*30 ), headers=headers)
     
     # Fills list with parsed news from response
+    noticias_mercurio = [] 
     noticias_mercurio += succionador_mercurial(response)
     print(f"{len(noticias_mercurio)} noticias en ram")
         
@@ -75,10 +73,9 @@ for i in range(0,100):
     
     # A timer shows respect
     time.sleep(0.3)
-    
-
-
+ 
 # END OF EL MERCURIO SECTION #
+
 
 
 
@@ -86,9 +83,7 @@ for i in range(0,100):
 url_mostrador = "https://www.elmostrador.cl/destacado/"
 
 
-# we will use different collections for storing from different sources
 collection = db["mostrador_raw"]
-# Go through 'destacado' section for collecting links
 
 for i in range(1,100):
     queue = []
