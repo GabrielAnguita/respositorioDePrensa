@@ -38,7 +38,7 @@ def get_tor_session():
     return session
 
 
-# EL MERCURIO SECTION #
+
 
 url_mercurio = "AQUI VA LA URL DE LA API, ENCUENTRELA USTED"
 
