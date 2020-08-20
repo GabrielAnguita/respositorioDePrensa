@@ -48,7 +48,7 @@ def getSustantivosMostradorDia(fecha):
                     'sustantivos_comunes': str(doc['cuentas']['sustantivos_comunes'])})
     else:
         return jsonify("no hay doc para tal fecha")
-        
+
 @app.route('/mostrador/verbos', methods=['GET'])
 def getVerbosMost():
     verbos = []
@@ -114,32 +114,7 @@ def getSustantivosMerc():
             })
     return jsonify(sustantivos)
 
-@app.route('/user/<id>', methods=['GET'])
-def getUser(id):
-    print(id)
-    user = db.find_one({'_id':ObjectId(id)})
-    return jsonify({
-           '_id': str(ObjectId(user['_id'])),
-            'name': user['name'],
-            'email': user['email'],
-            'password': user['password']
-    })
 
-@app.route('/users/<id>', methods=['DELETE'])
-def deleteUser(id):
-    db.delete_one({'_id':ObjectId(id)})
-    return jsonify({'msg':"user {} deleted".format(id)})
-
-@app.route('/user/<id>', methods=['PUT'])
-def updateUser(id):
-    db.update_one({'_id':ObjectId(id)}, {'$set':
-    {
-        'name': request.json['name'],
-        'email': request.json['email'],
-        'password': request.json['password']
-    }
-    })
-    return jsonify({'msg':"user {} updated".format(id)})
 
 if __name__== "__main__":
     app.run(debug=True)
