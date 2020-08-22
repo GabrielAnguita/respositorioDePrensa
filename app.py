@@ -28,8 +28,8 @@ mongo = PyMongo(app)
 
 CORS(app)
 
-most = mongo.db.cuenta_mostrador_prueba3
-merc = mongo.db.cuenta_mercurio_prueba3
+most = mongo.db.cuenta_mostrador_prueba4
+merc = mongo.db.cuenta_mercurio_prueba4
 
     
 @app.route('/mostrador/verbos/<fecha>', methods=['GET'])
@@ -40,7 +40,7 @@ def getVerbosMostradorDia(fecha):
        
     return jsonify({'_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'verbos': str(doc['cuentas']['verbos'])})
+                'verbos': doc['cuentas']['verbos']})
 
 @app.route('/mostrador/sustantivos_propios/<fecha>', methods=['GET'])
 def getNombresMostradorDia(fecha):
@@ -50,7 +50,7 @@ def getNombresMostradorDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'sustantivos_propios': str(doc['cuentas']['sustantivos_propios'])})
+                    'sustantivos_propios': doc['cuentas']['sustantivos_propios']})
     else:
         return jsonify("no hay doc para tal fecha")
 
@@ -62,7 +62,7 @@ def getSustantivosMostradorDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'sustantivos_comunes': str(doc['cuentas']['sustantivos_comunes'])})
+                    'sustantivos_comunes': doc['cuentas']['sustantivos_comunes']})
     else:
         return jsonify("no hay doc para tal fecha")
 
@@ -74,7 +74,7 @@ def getTodosMostradorDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'cuentas': str(doc['cuentas'])})
+                    'cuentas': doc['cuentas']})
     else:
         return jsonify("no hay doc para tal fecha")
 
@@ -87,7 +87,7 @@ def getVerbosMost():
             verbos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'verbos': str(doc['cuentas']['verbos'])
+                'verbos': doc['cuentas']['verbos']
             
             })
     return jsonify(verbos)
@@ -100,7 +100,7 @@ def getNombresMost():
             nombres.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'sustantivos_propios': str(doc['cuentas']['sustantivos_propios'])
+                'sustantivos_propios': doc['cuentas']['sustantivos_propios']
             
             })
     return jsonify(nombres)
@@ -113,7 +113,7 @@ def getSustantivosMost():
             sustantivos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'sustantivos_comunes': str(doc['cuentas']['sustantivos_comunes'])
+                'sustantivos_comunes': doc['cuentas']['sustantivos_comunes']
             
             })
     return jsonify(sustantivos)
@@ -126,7 +126,7 @@ def getTodosMost():
             todos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'cuentas': str(doc['cuentas'])
+                'cuentas': doc['cuentas']
             
             })
     return jsonify(todos)
@@ -140,7 +140,7 @@ def getTodosMerc():
             todos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'cuentas': str(doc['cuentas'])
+                'cuentas': doc['cuentas']
             
             })
     return jsonify(todos)
@@ -153,7 +153,7 @@ def getVerbosMerc():
             verbos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'verbos': str(doc['cuentas']['verbos'])
+                'verbos': doc['cuentas']['verbos']
             
             })
     return jsonify(verbos)
@@ -166,7 +166,7 @@ def getNombresMerc():
             nombres.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'sustantivos_propios': str(doc['cuentas']['sustantivos_propios'])
+                'sustantivos_propios': doc['cuentas']['sustantivos_propios']
             
             })
     return jsonify(nombres)
@@ -179,7 +179,7 @@ def getSustantivosMerc():
             sustantivos.append({
                 '_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'sustantivos_comunes': str(doc['cuentas']['sustantivos_comunes'])
+                'sustantivos_comunes': doc['cuentas']['sustantivos_comunes']
             
             })
     return jsonify(sustantivos)
@@ -193,7 +193,7 @@ def getVerbosMercurioDia(fecha):
        
     return jsonify({'_id': str(ObjectId(doc['_id'])),
                 'dia': str(doc['dia']),
-                'verbos': str(doc['cuentas']['verbos'])})
+                'verbos': doc['cuentas']['verbos']})
 
 @app.route('/mercurio/sustantivos_propios/<fecha>', methods=['GET'])
 def getNombresMercurioDia(fecha):
@@ -203,7 +203,7 @@ def getNombresMercurioDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'sustantivos_propios': str(doc['cuentas']['sustantivos_propios'])})
+                    'sustantivos_propios': doc['cuentas']['sustantivos_propios']})
     else:
         return jsonify("no hay doc para tal fecha")
 
@@ -215,7 +215,7 @@ def getSustantivosMercurioDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'sustantivos_comunes': str(doc['cuentas']['sustantivos_comunes'])})
+                    'sustantivos_comunes': doc['cuentas']['sustantivos_comunes']})
     else:
         return jsonify("no hay doc para tal fecha")
 
@@ -227,7 +227,7 @@ def getTodosMercuriorDia(fecha):
     if doc:   
         return jsonify({'_id': str(ObjectId(doc['_id'])),
                     'dia': str(doc['dia']),
-                    'cuentas': str(doc['cuentas'])})
+                    'cuentas': doc['cuentas']})
     else:
         return jsonify("no hay doc para tal fecha")
 
